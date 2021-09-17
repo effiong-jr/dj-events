@@ -1,0 +1,13 @@
+.footer {
+  margin: 100px 0 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer p {
+  margin: 5px 0;
+}
