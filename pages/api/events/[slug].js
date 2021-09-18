@@ -7,7 +7,7 @@ export default function handler(req, res) {
     if (!event) {
       return res.status(404).json({ message: 'No event found' })
     }
-    res.status(200).json({ data: event })
+    res.status(200).json(event)
   } else {
     res
       .status(405)
