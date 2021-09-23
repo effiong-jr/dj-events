@@ -6,8 +6,9 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
 import Layout from '@/components/Layout'
-import { API_URL } from '@/config/index'
 import styles from '@/styles/Event.module.css'
+
+const API_URL = process.env.API_URL
 
 const EventPage = ({ event }) => {
   const router = useRouter()

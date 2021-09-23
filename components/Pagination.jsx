@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { PER_PAGE } from '@/config/index'
 
 const Pagination = ({ total, page }) => {
+  const PER_PAGE = process.env.PER_PAGE
+
   const lastPage = Math.ceil(total / PER_PAGE)
 
   return (

@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import EventItem from '@/components/EventItem'
-import { API_URL } from '@/config/index'
+
+const API_URL = process.env.API_URL
 
 export default function SearchPage({ events }) {
   const router = useRouter()
@@ -38,7 +39,6 @@ export async function getServerSideProps(context) {
       ],
     },
   })
-  console.log(query)
 
   const res = await fetch(`${API_URL}/events?${query}`)
   const events = await res.json()

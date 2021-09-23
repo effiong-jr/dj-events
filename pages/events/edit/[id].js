@@ -6,11 +6,12 @@ import { FaImage } from 'react-icons/fa'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { API_URL } from '@/config/index'
 import Layout from '@/components/Layout'
 import Modal from '@/components/Modal'
 import styles from '@/styles/Form.module.css'
 import ImageUpload from '@/components/ImageUpload'
+
+const API_URL = process.env.API_URL
 
 const EditEventPage = ({ event }) => {
   const [values, setValues] = useState({

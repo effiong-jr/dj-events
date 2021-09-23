@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { API_URL } from '@/config/index'
+const API_URL = process.env.API_URL
 import Layout from '@/components/Layout'
 import styles from '@/styles/Form.module.css'
 

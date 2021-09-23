@@ -1,7 +1,9 @@
 import Layout from '@/components/Layout'
 import EventItem from '@/components/EventItem'
-import { API_URL, PER_PAGE } from '@/config/index'
 import Pagination from '@/components/Pagination'
+
+const API_URL = process.env.API_URL
+const PER_PAGE = process.env.PER_PAGE
 
 export default function EventsPage({ events, page, total }) {
   return (

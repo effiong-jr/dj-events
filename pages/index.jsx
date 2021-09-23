@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import EventItem from '@/components/EventItem'
-import { API_URL } from '@/config/index'
+
+const API_URL = process.env.API_URL
 
 export default function Home({ events }) {
   return (

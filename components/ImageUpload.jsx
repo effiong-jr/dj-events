@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { API_URL } from '../config/index'
 
 import styles from '@/styles/Form.module.css'
 
 const ImageUpload = ({ eventId, imageUploaded }) => {
   const [image, setImage] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+
+  const API_URL = process.env.API_URL
 
   const handleFileChange = (e) => {
     setImage(e.target.files[0])
