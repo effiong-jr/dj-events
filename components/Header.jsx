@@ -1,9 +1,16 @@
+import { useContext } from 'react'
+import AuthContext from '@/context/AuthContext'
+import { FaSignOutAlt, FaSignInAlt } from 'react-icons/fa'
 import Link from 'next/link'
 import Search from './Search'
 
 import styles from '@/styles/Header.module.css'
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext)
+
+  console.log(user)
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -20,10 +27,37 @@ const Header = () => {
             <Link href="/events">
               <a>Events</a>
             </Link>
-            <Link href="/events/add">
-              <a>Add Event</a>
-            </Link>
           </li>
+
+          {user ? (
+            <>
+              <li>
+                <Link href="/events/add">
+                  <a>Add Event</a>
+                </Link>
+              </li>
+
+              <li>
+                <button
+                  className="btn-secondary btn-icon"
+                  onClick={() => logout()}
+                >
+                  {' '}
+                  <FaSignOutAlt /> Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/account/login">
+                  <a className="btn-secondary btn-icon">
+                    <FaSignInAlt /> Login
+                  </a>
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
