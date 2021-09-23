@@ -4,6 +4,7 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [error, setError] = useState(null)
 
   // Register user
   const register = async (user) => {
@@ -27,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, register, login, logout, checkLoggedIn }}
+      value={{ user, error, register, login, logout, checkLoggedIn }}
     >
       {children}
     </AuthContext.Provider>

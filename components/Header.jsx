@@ -9,8 +9,6 @@ import styles from '@/styles/Header.module.css'
 const Header = () => {
   const { user, logout } = useContext(AuthContext)
 
-  console.log(user)
-
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -31,6 +29,12 @@ const Header = () => {
 
           {user ? (
             <>
+              <li>
+                <Link href="/accounts/dashboard">
+                  <a>Dashboard</a>
+                </Link>
+              </li>
+
               <li>
                 <Link href="/events/add">
                   <a>Add Event</a>
