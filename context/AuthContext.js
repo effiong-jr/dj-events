@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react'
 
+const NEXT_URL = process.env.NEXT_URL
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
@@ -13,7 +14,23 @@ export const AuthProvider = ({ children }) => {
 
   // Login user
   const login = async ({ email: identifier, password }) => {
-    console.log({ identifier, password })
+    const res = await fetch(`${NEXT_URL}/api/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ identifier, password }),
+    })
+
+    const data = await res.json()
+    console.log(data)
+
+    if (res.ok) {
+      setUser(data.user)
+    } else {
+      setError(data.message)
+      setError(null)
+    }
   }
 
   // Logout user

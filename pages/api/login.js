@@ -4,8 +4,26 @@ const login = async (req, res) => {
   const { identifier, password } = req.body
 
   if (req.method === 'POST') {
-    console.log(req.body)
-    res.json(200).json({})
+    const strapiRes = await fetch(`${API_URL}/auth/local`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ identifier, password }),
+    })
+
+    const data = await strapiRes.json()
+
+    console.log(data.jwt)
+
+    if (strapiRes.ok) {
+      // @todo - set cookie
+      res.status(200).json({ user: data.user })
+    } else {
+      res
+        .status(data.statusCode)
+        .json({ message: data.message[0].messages[0].message })
+    }
   } else {
     res.setHeader('Allow', ['POST'])
     return res

@@ -13,6 +13,12 @@ const LoginPage = () => {
 
   const { login, error } = useContext(AuthContext)
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error)
+    }
+  }, [error])
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -47,12 +53,13 @@ const LoginPage = () => {
           <input type="submit" value="Submit" className="btn" />
         </form>
         <p>
-          Don't have an account?{' '}
+          {`Don't have an account?`}{' '}
           <Link href="/account/register">
             <a>Register</a>
           </Link>{' '}
         </p>
       </div>
+      <ToastContainer />
     </Layout>
   )
 }
