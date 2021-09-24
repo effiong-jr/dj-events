@@ -175,8 +175,8 @@ const EditEventPage = ({ event }) => {
 
 export default EditEventPage
 
-export async function getServerSideProps(context) {
-  const { id } = context.query
+export async function getServerSideProps({ params: { id }, req }) {
+  console.log(req.headers.cookie)
 
   const res = await fetch(`${API_URL}/events/${id}`)
 

@@ -30,7 +30,7 @@ const Header = () => {
           {user ? (
             <>
               <li>
-                <Link href="/accounts/dashboard">
+                <Link href="/account/dashboard">
                   <a>Dashboard</a>
                 </Link>
               </li>
