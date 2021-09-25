@@ -25,7 +25,7 @@ const user = async (req, res) => {
       res.status(strapiRes.statusCode).json({ message: strapiRes.message })
     }
   } else {
-    res.setHeadder('Allow', ['GET'])
+    res.setHeader('Allow', ['GET'])
     res.status(405).json({ message: `Method '${res.method}' not allowed` })
   }
 }
