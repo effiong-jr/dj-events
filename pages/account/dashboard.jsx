@@ -1,10 +1,31 @@
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { parseCookie } from '@/helpers/index'
 import Layout from '@/components/Layout'
 import DashboardEvent from '@/components/DashboardEvent'
 import styles from '@/styles/Dashboard.module.css'
 
-const DashboardPage = ({ events }) => {
-  const deleteEvent = (id) => {}
+const API_URL = process.env.API_URL
+
+const DashboardPage = ({ events, token }) => {
+  const router = useRouter()
+
+  const deleteEvent = async (id) => {
+    const confirmed = confirm('Are you sure you want to delete this?')
+
+    if (confirmed) {
+      const res = await fetch(`${API_URL}/events/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const data = await res.json()
+      router.reload()
+    }
+  }
+
   return (
     <Layout title="User Dashboard">
       <div className={styles.dash}>
@@ -27,7 +48,6 @@ export default DashboardPage
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookie(req)
-  const API_URL = process.env.API_URL
 
   const res = await fetch(`${API_URL}/events/me`, {
     method: 'GET',
@@ -39,6 +59,6 @@ export async function getServerSideProps({ req }) {
   const events = await res.json()
 
   return {
-    props: { events },
+    props: { events, token },
   }
 }

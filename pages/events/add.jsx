@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-const API_URL = process.env.API_URL
 import { parseCookie } from '@/helpers/index'
 import Layout from '@/components/Layout'
 import styles from '@/styles/Form.module.css'
@@ -20,6 +19,7 @@ const AddEventPage = ({ token }) => {
   })
 
   const router = useRouter()
+  const API_URL = process.env.API_URL
 
   const handleSubmit = async (e) => {
     e.preventDefault()
