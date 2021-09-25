@@ -4,9 +4,7 @@ import DashboardEvent from '@/components/DashboardEvent'
 import styles from '@/styles/Dashboard.module.css'
 
 const DashboardPage = ({ events }) => {
-  const deleteEvent = (id) => {
-    console.log(id)
-  }
+  const deleteEvent = (id) => {}
   return (
     <Layout title="User Dashboard">
       <div className={styles.dash}>
