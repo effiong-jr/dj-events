@@ -26,7 +26,6 @@ export default function SearchPage({ events }) {
 
 export async function getServerSideProps(context) {
   const { term = '' } = context.query
-  console.log(term)
 
   const query = qs.stringify({
     _where: {

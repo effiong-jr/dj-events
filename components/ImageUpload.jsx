@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { parseCookie } from '../helpers'
 
 import styles from '@/styles/Form.module.css'
 
-const ImageUpload = ({ eventId, imageUploaded }) => {
+const ImageUpload = ({ eventId, imageUploaded, token }) => {
   const [image, setImage] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -26,6 +27,9 @@ const ImageUpload = ({ eventId, imageUploaded }) => {
     const res = await fetch(`${API_URL}/upload`, {
       method: 'POST',
       body: formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
 
     if (res.ok) {

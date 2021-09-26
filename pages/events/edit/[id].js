@@ -175,7 +175,11 @@ const EditEventPage = ({ event, token }) => {
 
       <Modal show={show} onClose={() => setShow(false)}>
         <div>
-          <ImageUpload eventId={values.id} imageUploaded={imageUploaded} />
+          <ImageUpload
+            eventId={values.id}
+            imageUploaded={imageUploaded}
+            token={token}
+          />
         </div>
       </Modal>
     </Layout>
