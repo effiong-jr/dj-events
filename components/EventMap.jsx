@@ -33,6 +33,7 @@ const EventMap = ({ event }) => {
         setViewport({ ...viewport, latitude: lat, longitude: lng })
         setLoading(false)
       } else {
+        console.log(address)
         console.log('Address Error')
       }
     }
