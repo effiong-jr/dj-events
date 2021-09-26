@@ -49,24 +49,34 @@ const EventPage = ({ event }) => {
 
 export default EventPage
 
-export async function getStaticPaths() {
-  const res = await fetch(`${API_URL}/events`)
-  const events = await res.json()
+// export async function getStaticPaths() {
+//   const res = await fetch(`${API_URL}/events`)
+//   const events = await res.json()
 
-  const paths = events.map((event) => ({ params: { slug: event.slug } }))
+//   const paths = events.map((event) => ({ params: { slug: event.slug } }))
 
-  return {
-    paths,
-    fallback: true,
-  }
-}
+//   return {
+//     paths,
+//     fallback: true,
+//   }
+// }
 
-export async function getStaticProps({ params }) {
+// export async function getStaticProps({ params }) {
+//   const res = await fetch(`${API_URL}/events?slug=${params.slug}`)
+
+//   const event = await res.json()
+//   return {
+//     props: { event: event[0] },
+//     revalidate: 1,
+//   }
+// }
+
+export async function getServerSideProps({ params }) {
   const res = await fetch(`${API_URL}/events?slug=${params.slug}`)
 
-  const event = await res.json()
+  const events = await res.json()
+
   return {
-    props: { event: event[0] },
-    revalidate: 1,
+    props: { event: events[0] },
   }
 }
